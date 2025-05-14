@@ -29,9 +29,9 @@ image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
 vis_params = {'min': 100,'max': 3500,'bands': ['B11', 'B8', 'B3']}
 
 # 建立訓練資料
-training001 = my_image.sample(
+training001 = image.sample(
     **{
-        'region': my_image.geometry(),
+        'region': image.geometry(),
         'scale': 10,
         'numPixels': 10000,
         'seed': 0,
@@ -60,7 +60,7 @@ vis_params_001 = {'min': 0, 'max': 10, 'palette': palette}
 
 # 顯示地圖
 Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=9)
-left_layer = geemap.ee_tile_layer(my_image, vis_params, "Sentinel-2")
+left_layer = geemap.ee_tile_layer(image, vis_params, "Sentinel-2")
 right_layer = geemap.ee_tile_layer(result001, vis_params_001, "KMeans clustered land cover")
 Map.split_map(left_layer, right_layer)
 Map.add_legend(title='Land Cover Cluster (KMeans)', legend_dict=legend_dict1, draggable=False, position='bottomright')
