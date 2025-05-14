@@ -28,6 +28,12 @@ image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .select('B.*')
 vis_params = {'min': 100,'max': 3500,'bands': ['B11', 'B8', 'B3']}
 
+if image is not None:
+    st.success("成功找到 Sentinel-2 影像！")
+    # ... 後續程式碼 ...
+else:
+    st.error("沒有找到符合篩選條件的 Sentinel-2 影像。")
+
 # 建立訓練資料
 training001 = image.sample(
     **{
