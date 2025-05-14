@@ -17,7 +17,7 @@ st.set_page_config(layout="wide")
 st.title("🌍 使用服務帳戶連接 GEE 的 Streamlit App")
 ###############################################
 # 地理區域
-point = ee.Geometry.Point([120.5583462887228, 24.081653403304525])
+point = ee.Geometry.Point([120.5583462887228,24.081653403304525 ])
 
 # 擷取 Sentinel-2
 image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
@@ -27,13 +27,6 @@ image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .first() \
     .select('B.*')
 vis_params = {'min': 100,'max': 3500,'bands': ['B11', 'B8', 'B3']}
-
-if image is not None:
-    st.success("成功找到 Sentinel-2 影像！")
-    # ... 後續程式碼 ...
-else:
-    st.error("沒有找到符合篩選條件的 Sentinel-2 影像。")
-print("Sentinel-2 波段名稱:", image.bandNames().getInfo())
 
 # 建立訓練資料
 training001 = image.sample(
@@ -65,8 +58,10 @@ legend_dict = {
 palette = list(legend_dict.values())
 vis_params_001 = {'min': 0, 'max': 10, 'palette': palette}
 
-
 # 顯示地圖
-Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=9)
-Map.addLayer(image, vis_params, "Sentinel-2")
+Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=8)
+left_layer = geemap.ee_tile_layer(image, vis_params, "Sentinel-2")
+right_layer = geemap.ee_tile_layer(result001, vis_params_001, "KMeans clustered land cover")
+Map.split_map(left_layer, right_layer)
+Map.add_legend(title='Land Cover Cluster (KMeans)', legend_dict=legend_dict, draggable=False, position='bottomright')
 Map.to_streamlit(height=600)
