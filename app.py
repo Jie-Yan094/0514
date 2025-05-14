@@ -59,7 +59,7 @@ palette = list(legend_dict.values())
 vis_params_001 = {'min': 0, 'max': 10, 'palette': palette}
 
 # 顯示地圖
-Map = geemap.Map(center=[24.081653403304525, 120.5583462887228 ], zoom=8)
+Map = geemap.Map(center=[24.081653403304525, 120.5583462887228 ], zoom=10)
 left_layer = geemap.ee_tile_layer(image, vis_params, "Sentinel-2")
 right_layer = geemap.ee_tile_layer(result001, vis_params_001, "KMeans clustered land cover")
 Map.split_map(left_layer, right_layer)
