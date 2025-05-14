@@ -41,7 +41,7 @@ training001 = image.sample(
 # 使用 wekaKMeans分群器
 n_clusters = 11
 clusterer_KMeans = ee.Clusterer.wekaKMeans(nClusters=n_clusters).train(training001)
-result001 = my_image.cluster(clusterer_KMeans)
+result001 = image.cluster(clusterer_KMeans)
 legend_dict = {
     '0': '#1c5f2c',
     '1': '#ab0000',
