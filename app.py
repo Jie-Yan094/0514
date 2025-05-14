@@ -58,5 +58,8 @@ legend_dict = {
 palette = list(legend_dict.values())
 vis_params_001 = {'min': 0, 'max': 10, 'palette': palette}
 
-Map.centerObject(image, 8)
+
+# 顯示地圖
+Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=9)
+
 Map.addLayer(image, vis_params, "Sentinel-2")
