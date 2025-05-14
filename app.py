@@ -61,5 +61,5 @@ vis_params_001 = {'min': 0, 'max': 10, 'palette': palette}
 
 # 顯示地圖
 Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=9)
-
 Map.addLayer(image, vis_params, "Sentinel-2")
+Map.to_streamlit(height=600)
