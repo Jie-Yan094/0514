@@ -26,7 +26,7 @@ image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .sort('CLOUDY_PIXEL_PERCENTAGE') \
     .first() \
     .select('B.*')
-vis_params = {'min': 100,'max': 3500,'bands': ['B4', 'B3', 'B2']}
+vis_params = { min: 0.0,max: 0.3,bands: ['B4', 'B3', 'B2'],}
 
 # 建立訓練資料
 training001 = image.sample(
