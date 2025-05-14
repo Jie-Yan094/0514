@@ -33,6 +33,7 @@ if image is not None:
     # ... 後續程式碼 ...
 else:
     st.error("沒有找到符合篩選條件的 Sentinel-2 影像。")
+print("Sentinel-2 波段名稱:", image.bandNames().getInfo())
 
 # 建立訓練資料
 training001 = image.sample(
