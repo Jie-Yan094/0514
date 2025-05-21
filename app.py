@@ -53,8 +53,8 @@ st.success(f"目前選擇的日期區間為：{start_date} 到 {end_date}")
 
 st.title("利用擴充器示範")
 #下拉式資訊
-with st.expander("展示gif檔"):
-    st.image("pucallpa.gif")
+#with st.expander("展示gif檔"):
+#    st.image("pucallpa.gif")
 
 with st.expander("播放mp4檔"):
     video_file = open("Tamsui.mp4", "rb")  # "rb"指的是讀取二進位檔案（圖片、影片）
