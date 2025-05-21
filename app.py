@@ -10,6 +10,9 @@ credentials = service_account.Credentials.from_service_account_info(
     service_account_info,
     scopes=["https://www.googleapis.com/auth/earthengine"]
 )
+
+st.set_page_config(layout="wide",page_title="STREAMILT-0521")
+
 # 初始化 GEE
 ee.Initialize(credentials)
 ###############################################
