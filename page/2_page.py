@@ -23,7 +23,7 @@ point = ee.Geometry.Point([120.5583462887228,24.081653403304525 ])
 # 擷取 Sentinel-2
 image = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .filterBounds(point) \
-    .filterDate('2021-01-01', '2022-01-01') \
+    .filterDate('start_date', 'end_date') \
     .sort('CLOUDY_PIXEL_PERCENTAGE') \
     .first() \
     .select('B.*')
